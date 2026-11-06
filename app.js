@@ -1,6 +1,6 @@
 const $=s=>document.querySelector(s),E=s=>String(s??'').replace(/[&<>"]/g,c=>'&#'+c.charCodeAt(0)+';'),p2=n=>String(n).padStart(2,'0');
 let T=sessionStorage.getItem('t')||'',U=JSON.parse(sessionStorage.getItem('u')||'null'),PER=[],CP='',CUR='',RAW=[],PUN=[],CR={};
-const API_URL='https://script.google.com/macros/s/AKfycbz-EjeTdh1oPBg3TS-SXtBTiHqUmEBSsbFxa56DmvQBmebpH1VL_r0tJGDnNo2tN7h5/exec'; // ends with /exec
+const API_URL='https://script.google.com/macros/s/AKfycbzkCpe9GkX7CGa-EnaihiZ0lq6oXC6ZEr9gTGV8iG2RMRiI2J7RmRB-BZuL5aMioAxn/exec'; // ends with /exec
 const A=(a,p)=>fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({token:T,action:a,payload:p||{}})}).then(r=>r.json()).then(r=>{if(!r.ok)throw Error(r.error);return r.data});
 const toast=(m,c='success')=>{const d=document.createElement('div');d.className='alert alert-'+c+' position-fixed top-0 end-0 m-3';d.style.zIndex=3000;d.textContent=m;document.body.append(d);setTimeout(()=>d.remove(),4500)};
 const go=f=>async(...a)=>{try{return await f(...a)}catch(x){toast(x.message,'danger');if(/Session expired/.test(x.message))logout()}};
